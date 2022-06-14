@@ -1,0 +1,50 @@
+# For this project, I downloaded Top 50 Most Followed Instagram Accounts data from Kaggle.
+# Then I created a table to insert the Instagram data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Instagramdata 
+(
+rank integer primary key,
+username varchar NOT NULL,
+owner varchar NOT NULL,
+followers_in_millions integer NOT NULL,
+profession_activity varchar NOT NULL,
+country_continent varchar NOT NULL
+);
+
+#Then I inserted the Instagram data .csv into the table.
+
+#Next, I explored the data using the following SQL. 
+
+#First I determined the most popular profession/activity of the Instagram account owners
+SELECT
+profession_activity,
+count(profession_activity) as popularity
+FROM BIT_DB.Instagramdata
+GROUP BY  profession_activity
+ORDER BY popularity desc;
+
+#Second, I inquired how many of the instagram accounts where owned by actors
+SELECT
+profession_activity,
+count(profession_activity) as popularity
+FROM BIT_DB.Instagramdata
+WHERE profession_activity LIKE '%act%'
+GROUP BY  profession_activity
+ORDER BY popularity desc
+
+#Lastly, I dermined the top 3 countries where the Instagram account owners reside
+SELECT 
+country_continent,
+count(country_continent)
+FROM
+BIT_DB.Instagramdata
+GROUP BY 
+country_continent
+ORDER BY 
+country_continent desc
+LIMIT 3;
+
+
+
