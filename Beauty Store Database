@@ -1,3 +1,5 @@
+---Create a store database. 
+
 CREATE TABLE Beauty (ID INTEGER PRIMARY KEY, Product TEXT, Cost INTEGER, Price INTEGER, Aisle INTEGER);
 
 INSERT INTO Beauty VALUES 
